@@ -1,7 +1,8 @@
 <template>
   <header>
     <img alt="Vue logo" src="@/assets/logo.png">
-    <h1>{{ title }}</h1>
+    <h1 class="mb-3">{{ title }}</h1>
+    <hr>
     <ButtonComponent title="Add Task" background="#465EFC" color="#FFF"/>
   </header>
 </template>

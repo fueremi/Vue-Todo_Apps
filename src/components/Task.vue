@@ -17,9 +17,9 @@
             type="checkbox"
             id="flexSwitchCheckDefault"
             :checked="task.reminder"
-            @change="onChange(task.id)"
+            @change="$emit('toggle-reminder', task.id)"
           />
-          <button class="btn m-0 p-0" @click="onClick(task.id)">
+          <button class="btn m-0 p-0" @click="$emit('delete-task', task.id)">
             <b-icon icon="x-circle-fill"></b-icon>
           </button>
         </div>
@@ -40,19 +40,16 @@ export default {
       type: Object,
     },
   },
-  methods: {
-    onChange(id) {
-      console.log(id);
-    },
-    onClick(id) {
-      console.log(id);
-    },
-  },
 };
 </script>
 
 <style scoped>
 svg {
   color: salmon;
+}
+
+.form-check-input:checked {
+  background-color: #465efc;
+  border-color: #465efc;
 }
 </style>

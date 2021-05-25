@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <HeaderComponent title="Vue Todo Apps" />
-    <Tasks :tasks="tasks"/>
+    <Tasks
+      :tasks="tasks"
+      @toggle-reminder="toggleReminder"
+      @delete-task="deleteTask"
+    />
   </div>
 </template>
 
@@ -13,56 +17,67 @@ export default {
   name: "App",
   components: {
     HeaderComponent,
-    Tasks
+    Tasks,
   },
   data() {
     return {
       tasks: [
         {
           id: 1,
-          title: 'Belajar Vue',
-          datetime: '08.30 AM, Monday',
-          reminder: true
+          title: "Belajar Vue",
+          datetime: "08.30 AM, Monday",
+          reminder: true,
         },
         {
           id: 2,
-          title: 'Belajar React',
-          datetime: '08.30 AM, Tuesday',
-          reminder: false
+          title: "Belajar React",
+          datetime: "08.30 AM, Tuesday",
+          reminder: false,
         },
         {
           id: 3,
-          title: 'Belajar Angular',
-          datetime: '08.30 AM, Wednesday',
-          reminder: true
+          title: "Belajar Angular",
+          datetime: "08.30 AM, Wednesday",
+          reminder: true,
         },
         {
           id: 4,
-          title: 'Belajar Express',
-          datetime: '08.30 AM, Thursday',
-          reminder: false
+          title: "Belajar Express",
+          datetime: "08.30 AM, Thursday",
+          reminder: false,
         },
         {
           id: 5,
-          title: 'Belajar Laravel',
-          datetime: '08.30 AM, Friday',
-          reminder: false
+          title: "Belajar Laravel",
+          datetime: "08.30 AM, Friday",
+          reminder: false,
         },
         {
           id: 6,
-          title: 'Belajar Django',
-          datetime: '08.30 AM, Saturday',
-          reminder: false
+          title: "Belajar Django",
+          datetime: "08.30 AM, Saturday",
+          reminder: false,
         },
         {
           id: 7,
-          title: 'Belajar Springboot',
-          datetime: '08.30 AM, ',
-          reminder: false
-        }
-      ]
-    }
-  }
+          title: "Belajar Springboot",
+          datetime: "08.30 AM, Sunday ",
+          reminder: false,
+        },
+      ],
+    };
+  },
+  methods: {
+    toggleReminder(id) {
+      this.tasks = this.tasks.map((task) =>
+        task.id === id ? { ...task, reminder: !task.reminder } : task
+      );
+    },
+    deleteTask(id) {
+      
+      this.tasks = this.tasks.filter((task) => task.id !== id)
+    },
+  },
 };
 </script>
 
