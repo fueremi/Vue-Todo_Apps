@@ -2,7 +2,7 @@
   <div class="container">
     <hr />
     <h5>Add Task</h5>
-    <form class="row">
+    <form class="row" @submit.prevent="onSubmit()">
       <div class="col-md-5 mb-3">
         <label for="staticEmail2" class="visually-hidden">Email</label>
         <input
@@ -10,6 +10,7 @@
           class="form-control"
           id="title"
           placeholder="Task title (eg. Belajar Javascript)"
+          v-model="title"
         />
       </div>
       <div class="col-md-5 mb-3">
@@ -19,6 +20,7 @@
           class="form-control"
           id="datetime"
           placeholder="Date Time (eg. 12.00 AM, Monday)"
+          v-model="datetime"
         />
       </div>
       <div class="col-md-2">
@@ -31,6 +33,29 @@
 <script>
 export default {
   name: "AddTask",
+  data() {
+    return {
+      id: 8,
+      title: '',
+      datetime: '',
+      reminder: false
+    }
+  },
+  methods: {
+    onSubmit(){
+      const newTask = {
+        id: this.id,
+        title: this.title,
+        datetime: this.datetime,
+        reminder: false
+      }
+      
+      this.$emit('add-task', newTask)
+
+      this.title = ''
+      this.datetime= ''
+    }
+  }
 };
 </script>
 

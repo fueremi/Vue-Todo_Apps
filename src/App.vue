@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <HeaderComponent :showAddTask="showAddTask" title="Vue Todo Apps" @toggle-add-task="toggleAddTask"/>
-    <AddTask v-if="showAddTask"/>
+    <AddTask v-if="showAddTask" @add-task="addTask"/>
     <hr>
     <Tasks
       :tasks="tasks"
@@ -83,6 +83,9 @@ export default {
     },
     toggleAddTask() {
       this.showAddTask = !this.showAddTask
+    },
+    addTask(newTask){
+      this.tasks.push(newTask)
     }
   },
 };
