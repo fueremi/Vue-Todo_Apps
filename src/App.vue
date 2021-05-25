@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <HeaderComponent title="Vue Todo Apps" />
+    <HeaderComponent :showAddTask="showAddTask" title="Vue Todo Apps" @toggle-add-task="toggleAddTask"/>
+    <AddTask v-if="showAddTask"/>
+    <hr>
     <Tasks
       :tasks="tasks"
       @toggle-reminder="toggleReminder"
@@ -12,12 +14,14 @@
 <script>
 import HeaderComponent from "@/components/HeaderComponent";
 import Tasks from "@/components/Tasks";
+import AddTask from "@/components/AddTask";
 
 export default {
   name: "App",
   components: {
     HeaderComponent,
     Tasks,
+    AddTask
   },
   data() {
     return {
@@ -65,6 +69,7 @@ export default {
           reminder: false,
         },
       ],
+      showAddTask: false,
     };
   },
   methods: {
@@ -74,9 +79,11 @@ export default {
       );
     },
     deleteTask(id) {
-      
       this.tasks = this.tasks.filter((task) => task.id !== id)
     },
+    toggleAddTask() {
+      this.showAddTask = !this.showAddTask
+    }
   },
 };
 </script>
