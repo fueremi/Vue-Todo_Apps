@@ -1,19 +1,86 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+    <HeaderComponent title="Vue Todo Apps" />
+    <Tasks :tasks="tasks"/>
   </div>
 </template>
 
 <script>
+import HeaderComponent from "@/components/HeaderComponent";
+import Tasks from "@/components/Tasks";
+
 export default {
-  name: 'App'
-}
+  name: "App",
+  components: {
+    HeaderComponent,
+    Tasks
+  },
+  data() {
+    return {
+      tasks: [
+        {
+          id: 1,
+          title: 'Belajar Vue',
+          datetime: '08.30 AM, Monday',
+          reminder: true
+        },
+        {
+          id: 2,
+          title: 'Belajar React',
+          datetime: '08.30 AM, Tuesday',
+          reminder: false
+        },
+        {
+          id: 3,
+          title: 'Belajar Angular',
+          datetime: '08.30 AM, Wednesday',
+          reminder: true
+        },
+        {
+          id: 4,
+          title: 'Belajar Express',
+          datetime: '08.30 AM, Thursday',
+          reminder: false
+        },
+        {
+          id: 5,
+          title: 'Belajar Laravel',
+          datetime: '08.30 AM, Friday',
+          reminder: false
+        },
+        {
+          id: 6,
+          title: 'Belajar Django',
+          datetime: '08.30 AM, Saturday',
+          reminder: false
+        },
+        {
+          id: 7,
+          title: 'Belajar Springboot',
+          datetime: '08.30 AM, ',
+          reminder: false
+        }
+      ]
+    }
+  }
+};
 </script>
 
 <style>
 #app {
+  font-family: "Ubuntu";
   margin: 0;
   text-align: center;
-  /* background-color: #FBFAF9 ; */
+}
+
+.list-group-item-primary {
+  color: #465efc !important;
+  background-color: #e1e5ff !important;
+  border-radius: 10px;
+}
+
+.list-group-item-success {
+  color: rgb(34, 114, 47) !important;
+  background-color: rgb(216, 247, 221) !important;
 }
 </style>
