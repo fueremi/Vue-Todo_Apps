@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <HeaderComponent :showAddTask="showAddTask" title="Vue Todo Apps" @toggle-add-task="toggleAddTask"/>
+    <Header :showAddTask="showAddTask" title="Vue Todo Apps" @toggle-add-task="toggleAddTask"/>
     <AddTask v-if="showAddTask" @add-task="addTask"/>
     <hr>
     <Tasks
@@ -8,20 +8,23 @@
       @toggle-reminder="toggleReminder"
       @delete-task="deleteTask"
     />
+    <Footer />
   </div>
 </template>
 
 <script>
-import HeaderComponent from "@/components/HeaderComponent";
+import Header from "@/components/Header";
 import Tasks from "@/components/Tasks";
 import AddTask from "@/components/AddTask";
+import Footer from "@/components/Footer";
 
 export default {
   name: "App",
   components: {
-    HeaderComponent,
+    Header,
     Tasks,
-    AddTask
+    AddTask,
+    Footer
   },
   data() {
     return {

@@ -3,7 +3,7 @@
     <hr>
     <img alt="Vue logo" src="@/assets/logo.png" />
     <h1 class="mb-3">{{ title }}</h1>
-    <ButtonComponent
+    <Button
       :title="showAddTask ? 'Close' : 'Add Task'"
       :background="showAddTask ? 'Salmon' : '#465EFC'"
       color="#FFF"
@@ -13,13 +13,13 @@
 </template>
 
 <script>
-import ButtonComponent from "@/components/ButtonComponent";
+import Button from "@/components/Button";
 
 export default {
-  name: "HeaderComponent",
+  name: "Header",
   props: ["title", "showAddTask"],
   components: {
-    ButtonComponent,
+    Button,
   },
 };
 </script>

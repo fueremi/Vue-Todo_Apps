@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "ButtonComponent",
+  name: "Button",
   props: {
     title: {
       type: String,
